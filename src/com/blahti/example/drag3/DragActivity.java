@@ -104,11 +104,11 @@ public void addNewImageToScreen (int resourceId)
 
 public void addNewImageToScreen ()
 {
-    int resourceId = R.drawable.hello;
+    int resourceId = R.drawable.puzzle_if;
 
-    int m = mImageCount % 3;
-    if (m == 1) resourceId = R.drawable.photo1;
-    else if (m == 2) resourceId = R.drawable.photo2;
+    int m = mImageCount % 2;
+    if (m == 1) resourceId = R.drawable.puzzle_then;
+    //else if (m == 2) resourceId = R.drawable.photo2;
     addNewImageToScreen (resourceId);
 }
 

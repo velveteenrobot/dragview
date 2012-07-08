@@ -79,8 +79,8 @@ public void onDropCompleted (View target, boolean success)
     if (success) {
        mEmpty = true;
        if (mCellNumber >= 0) {
-          int bg = mEmpty ? R.color.cell_empty : R.color.cell_filled;
-          setBackgroundResource (bg);
+          //int bg = mEmpty ? R.color.cell_empty : R.color.cell_filled;
+          //setBackgroundResource (bg);
           setImageDrawable (null);
        } else {
          // For convenience, we use a free-standing ImageCell to
@@ -114,8 +114,8 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
 {
     // Mark the cell so it is no longer empty.
     mEmpty = false;
-    int bg = mEmpty ? R.color.cell_empty : R.color.cell_filled;
-    setBackgroundResource (bg);
+    //int bg = mEmpty ? R.color.cell_empty : R.color.cell_filled;
+    //setBackgroundResource (bg);
 
     // The view being dragged does not actually change its parent and switch over to the ImageCell.
     // What we do is copy the drawable from the source view.
@@ -136,8 +136,8 @@ public void onDrop(DragSource source, int x, int y, int xOffset, int yOffset,
 public void onDragEnter(DragSource source, int x, int y, int xOffset, int yOffset,
         DragView dragView, Object dragInfo)
 {
-    int bg = mEmpty ? R.color.cell_empty_hover : R.color.cell_filled_hover;
-    setBackgroundResource (bg);
+    //int bg = mEmpty ? R.color.cell_empty_hover : R.color.cell_filled_hover;
+    //setBackgroundResource (bg);
 }
 
 /**
@@ -154,8 +154,8 @@ public void onDragOver(DragSource source, int x, int y, int xOffset, int yOffset
 public void onDragExit(DragSource source, int x, int y, int xOffset, int yOffset,
         DragView dragView, Object dragInfo)
 {
-    int bg = mEmpty ? R.color.cell_empty : R.color.cell_filled;
-    setBackgroundResource (bg);
+    //int bg = mEmpty ? R.color.cell_empty : R.color.cell_filled;
+    //setBackgroundResource (bg);
 }
 
 /**

@@ -67,9 +67,11 @@ public View getView (int position, View convertView, ViewGroup parent)
     if (convertView == null) {
         // If it's not recycled, create a new ImageCell.
         v = new ImageCell (mContext);
-        v.setLayoutParams(new GridView.LayoutParams(85, 85));
-        v.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        v.setAdjustViewBounds(true);
+        v.setLayoutParams(new GridView.LayoutParams(220, 240));
+        v.setScaleType(ImageView.ScaleType.FIT_START);
         v.setPadding(8, 8, 8, 8);
+        v.setMaxWidth(25); //doesn't seem to do anything
 
     } else {
         v = (ImageCell) convertView;
@@ -79,7 +81,7 @@ public View getView (int position, View convertView, ViewGroup parent)
     v.mGrid = (GridView) mParentView;
     v.mEmpty = true;
 //    v.setBackgroundResource (R.color.drop_target_enabled);
-    v.setBackgroundResource (R.color.cell_empty);
+    //v.setBackgroundResource (R.color.cell_empty);
 
     //v.mGrid.requestDisallowInterceptTouchEvent (true);
 

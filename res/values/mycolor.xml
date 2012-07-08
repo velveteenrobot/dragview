@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="grid_background">#FF000000</color>
+<!--<color name="grid_background">#FFF00000</color>
 <color name="cell_empty">#FF993311</color>
 <color name="cell_filled">#FFA99033</color>
 <color name="cell_empty_hover">#ff00ff00</color>
@@ -12,4 +12,5 @@
 <color name="drop_target_color2">#FFA99033</color>
 <color name="drop_target_enabled">#FF009933</color>
 <color name="drop_target_disabled">#FFdddddd</color>
+-->
 </resources>
