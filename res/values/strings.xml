@@ -5,4 +5,6 @@
     <string name="app_name">Drag to GridView</string>
     <integer name="num_images">9</integer>
     <integer name="num_columns">3</integer>
+    <string name="main_screen">MainScreen</string>
+    <string name="splash_screen">SplashScreen</string>
 </resources>
