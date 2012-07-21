@@ -103,15 +103,6 @@ public void addNewImageToScreen (int resourceId)
  *
  */    
 
-public void addNewImageToScreen ()
-{
-    int resourceId = R.drawable.puzzle_if;
-
-    int m = mImageCount % 2;
-    if (m == 1) resourceId = R.drawable.puzzle_then;
-    //else if (m == 2) resourceId = R.drawable.photo2;
-    addNewImageToScreen (resourceId);
-}
 
 /**
  * Handle a click on a view.
@@ -133,7 +124,13 @@ public void onClick(View v)
 
 public void onClickAddImage (View v) 
 {
-    addNewImageToScreen ();
+    
+	if (v.getId() == R.id.button_add_then)
+	addNewImageToScreen (R.drawable.puzzle_then);
+	
+	if (v.getId() == R.id.button_add_if)
+		addNewImageToScreen (R.drawable.puzzle_if);
+	
 }
 
 /**
@@ -230,35 +227,6 @@ public boolean onLongClick(View v)
 
     // If we get here, return false to indicate that we have not taken care of the event.
     return false;
-}
-
-/**
- * Perform an action in response to a menu item being clicked.
- *
- */
-
-public boolean onOptionsItemSelected (MenuItem item) 
-{
-    switch (item.getItemId()) {
-        case HIDE_TRASHCAN_MENU_ID:
-            if (mDeleteZone != null) mDeleteZone.setVisibility (View.INVISIBLE);
-            return true;
-        case SHOW_TRASHCAN_MENU_ID:
-            if (mDeleteZone != null) mDeleteZone.setVisibility (View.VISIBLE);
-            return true;
-        case ADD_OBJECT_MENU_ID:
-            // Add a new object to the screen;
-            addNewImageToScreen ();
-            return true;
-        case CHANGE_TOUCH_MODE_MENU_ID:
-            mLongClickStartsDrag = !mLongClickStartsDrag;
-            String message = mLongClickStartsDrag ? "Changed touch mode. Drag now starts on long touch (click)." 
-                                                  : "Changed touch mode. Drag now starts on touch (click).";
-            Toast.makeText (getApplicationContext(), message, Toast.LENGTH_LONG).show ();
-            return true;
-    }
-
-    return super.onOptionsItemSelected(item);
 }
 
 /**

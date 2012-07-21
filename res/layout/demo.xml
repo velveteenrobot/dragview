@@ -6,59 +6,41 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    >
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:weightSum="1.0" 
+    android:weightSum="1.0"
     >
-<GridView xmlns:android="http://schemas.android.com/apk/res/android" 
+    
+ <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/image_grid_view"
-    android:layout_width="fill_parent"
-    android:columnWidth="90dp" 
-    android:layout_height="fill_parent"
+    android:layout_width="400dp"
+     android:layout_height="fill_parent"
+    android:columnWidth="90dp"
     android:numColumns="auto_fit"
     android:verticalSpacing="2dip"
     android:horizontalSpacing="2dip"
     android:stretchMode="columnWidth"
     android:gravity="center"
-    android:layout_weight="0.8"
+    android:layout_weight="0.2"
+    android:layout_toLeftOf="@+id/rightmost_part"
 />
-<LinearLayout 
+    
+    
+<LinearLayout
    android:id="@+id/bottom_part"
-   android:orientation="horizontal"
-  
-   android:layout_width="fill_parent" 
-   android:layout_height="fill_parent"
-   android:layout_weight="0.2"
+   android:orientation="vertical"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
    android:weightSum="1.0"
+   android:layout_alignParentLeft="true"
    >
 <Button
-    android:id="@+id/button_add_image"
+    android:id="@+id/button_add_if"
     android:layout_width="100dp"
     android:layout_height="80dp"
     android:background="@drawable/puzzle_if"
-    android:layout_centerHorizontal="true"
-    android:onClick="onClickAddImage"
-    android:text="Add image"/>
-<com.blahti.example.drag3.DeleteZone
-    android:id="@+id/delete_zone_view"
-    android:layout_width="60dp" 
-    android:layout_height="60dp" 
-    android:layout_gravity="center"
-    android:src="@drawable/delete_zone"/>
-<Button
-    android:id="@+id/button_add_image"
-    android:layout_width="100dp"
-    android:layout_height="80dp"
-    android:background="@drawable/puzzle_then"
-    android:layout_centerHorizontal="true"
     android:onClick="onClickAddImage"
     android:text="Add image"/>
 
@@ -68,15 +50,37 @@
     android:layout_width="100dp"
     android:layout_height="80dp">
 
-    <ImageView  
-        android:layout_width="fill_parent" 
-        android:layout_height="fill_parent" 
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:layout_gravity="center"
        />
 </FrameLayout>
+<com.blahti.example.drag3.DeleteZone
+    android:id="@+id/delete_zone_view"
+    android:layout_width="60dp"
+    android:layout_height="60dp"
+    android:layout_gravity="center"
+    android:src="@drawable/delete_zone"/>
+</LinearLayout>
 
+<LinearLayout
+    android:id="@+id/rightmost_part"
+   android:orientation="vertical"
+   android:layout_width="wrap_content"
+   android:layout_height="wrap_content"
+   android:weightSum="1.0"
+   android:layout_alignParentRight="true"
+   >
+    <Button
+    android:id="@+id/button_add_then"
+    android:layout_width="100dp"
+    android:layout_height="80dp"
+    android:background="@drawable/puzzle_then"
+    android:layout_centerHorizontal="true"
+    android:onClick="onClickAddImage"
+    android:text="Add image"/>
 </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
 
-</LinearLayout>
 </com.blahti.example.drag3.DragLayer>
