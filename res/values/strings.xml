@@ -7,4 +7,5 @@
     <integer name="num_columns">3</integer>
     <string name="main_screen">MainScreen</string>
     <string name="splash_screen">SplashScreen</string>
+    <string name="save">Save!</string>
 </resources>

@@ -124,12 +124,27 @@ public void onClick(View v)
 
 public void onClickAddImage (View v) 
 {
-    
-	if (v.getId() == R.id.button_add_then)
-	addNewImageToScreen (R.drawable.puzzle_then);
+    if (v.getId() == R.id.button_add_then_cw)
+	addNewImageToScreen (R.drawable.puzzle_then_cw);
+    	
+	if (v.getId() == R.id.button_add_then_ccw)
+	addNewImageToScreen (R.drawable.puzzle_then_ccw);
 	
-	if (v.getId() == R.id.button_add_if)
-		addNewImageToScreen (R.drawable.puzzle_if);
+	if (v.getId() == R.id.button_add_then_forwards)
+	addNewImageToScreen (R.drawable.puzzle_then_forwards);
+	
+	if (v.getId() == R.id.button_add_then_backwards)
+	addNewImageToScreen (R.drawable.puzzle_then_backwards);
+	
+	if (v.getId() == R.id.button_add_then_cow)
+	addNewImageToScreen (R.drawable.puzzle_then_cow);
+	
+	if (v.getId() == R.id.button_add_if_2ft)
+		addNewImageToScreen (R.drawable.puzzle_if_2ft);
+	
+	if (v.getId() == R.id.button_add_if_8ft)
+		addNewImageToScreen (R.drawable.puzzle_if_8ft);
+	
 	
 }
 
