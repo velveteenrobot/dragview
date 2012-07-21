@@ -432,6 +432,7 @@ public class DragController {
         case MotionEvent.ACTION_UP:
             if (mDragging) {
                 drop(screenX, screenY);
+            //    Log.i("dragactivity", "x =" + String.valueOf(screenX) + "and y =" + String.valueOf(screenY ));
             }
             endDrag();
 
@@ -477,6 +478,7 @@ public class DragController {
             if (r.contains(x, y)) {
                 dropCoordinates[0] = x - dropCoordinates[0];
                 dropCoordinates[1] = y - dropCoordinates[1];
+                Log.i("dragcontroller", "i =" + String.valueOf(i));
                 return target;
             }
         }

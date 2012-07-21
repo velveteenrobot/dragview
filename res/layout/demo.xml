@@ -22,8 +22,7 @@
     android:verticalSpacing="2dip"
     android:horizontalSpacing="2dip"
     android:stretchMode="columnWidth"
-    android:gravity="center"
-    android:layout_weight="0.2"
+    android:gravity="right"
     android:layout_toLeftOf="@+id/rightmost_part"
 />
     

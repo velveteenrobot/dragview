@@ -223,6 +223,7 @@ public boolean onLongClick(View v)
            return false;
         }
         return startDrag (v);
+        
     }
 
     // If we get here, return false to indicate that we have not taken care of the event.
@@ -248,6 +249,9 @@ public boolean onTouch (View v, MotionEvent ev)
     // In the situation where a long click is not needed to initiate a drag, simply start on the down event.
     if (action == MotionEvent.ACTION_DOWN) {
        handledHere = startDrag (v);
+    }
+    if(action == MotionEvent.ACTION_UP){
+    	
     }
     
     return handledHere;

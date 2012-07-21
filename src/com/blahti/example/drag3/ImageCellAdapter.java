@@ -2,9 +2,12 @@ package com.blahti.example.drag3;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.BaseAdapter;
+import android.widget.GridView;
+import android.widget.ImageView;
 
 /**
  * This class is used with a GridView object. It provides a set of ImageCell objects 
@@ -50,7 +53,7 @@ public Object getItem(int position)
 }
 
 public long getItemId(int position) {
-    return position;
+	return position;
 }
 
 /**
@@ -94,6 +97,8 @@ public View getView (int position, View convertView, ViewGroup parent)
     v.setOnClickListener ((View.OnClickListener) mContext);
     v.setOnLongClickListener ((View.OnLongClickListener) mContext);
 
+    
+    
     return v;
 }
 

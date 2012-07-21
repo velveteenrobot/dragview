@@ -26,6 +26,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -173,6 +174,7 @@ public class DragView extends View
         lp.x = touchX - mRegistrationX;
         lp.y = touchY - mRegistrationY;
         mWindowManager.updateViewLayout(this, lp);
+       // Log.i("dragactivity", "x =" + String.valueOf(lp.x) + " and y = " + String.valueOf(lp.y) );
     }
 
     void remove() {
