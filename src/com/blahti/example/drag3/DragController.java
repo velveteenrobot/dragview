@@ -31,6 +31,7 @@ import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.content.res.Resources;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -256,18 +257,18 @@ public class DragController {
 
         Log.i("DragController", "recentButton is: " + recentButton);
 
-        if (recentButton < 0)
-        {
+        //if (recentButton < 0)
+        //{
           int[] coordinates = mCoordinatesTemp;
           int x = (int) mMotionDownX;
           int y = (int) mMotionDownY;
 
           draggingFrom = whichDropTarget(x, y, coordinates);
-        }
-        else
-        {
-          draggingFrom = -1;
-        }
+        //}
+        //else
+        //{
+        //  draggingFrom = -1;
+        //}
         Log.i("DragController", "dragging from: " + draggingFrom);
 
 
@@ -499,18 +500,29 @@ public class DragController {
                 Log.i("DragController", "I get called this many times.");
                 Log.i("DragController", "draggedTo: " + draggedTo);
 
+                Resources res = mContext.getResources();
+                int numImages = res.getInteger (R.integer.num_images);
+
+
+
                 if (draggingFrom >= 0)
                 {
                   int puzzle = imagePositions.get(draggingFrom);
                   Log.i("DragController", "puzzle is: " + puzzle);
                   imagePositions.set(draggingFrom, -1);
-                  imagePositions.set(draggedTo, puzzle);
-                  draggingFrom = -1;
+                  if (draggedTo < numImages)
+                  {
+                    imagePositions.set(draggedTo, puzzle);
+                    draggingFrom = -1;
+                  }
                 }
                 else
                 {
-                  imagePositions.set(draggedTo, recentButton);
-                  recentButton = -1;
+                  if (draggedTo < numImages ) 
+                  {
+                    imagePositions.set(draggedTo, recentButton);
+                    recentButton = -1;
+                  }
                 }
 
                 return true;
