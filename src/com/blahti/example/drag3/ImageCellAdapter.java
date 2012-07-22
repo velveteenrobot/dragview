@@ -71,7 +71,7 @@ public View getView (int position, View convertView, ViewGroup parent)
         // If it's not recycled, create a new ImageCell.
         v = new ImageCell (mContext);
         v.setAdjustViewBounds(true);
-        v.setLayoutParams(new GridView.LayoutParams(130, 145));
+        v.setLayoutParams(new GridView.LayoutParams(260, 290));
         v.setScaleType(ImageView.ScaleType.FIT_START);
         v.setPadding(8, 8, 8, 8);
         v.setMaxWidth(25); //doesn't seem to do anything
