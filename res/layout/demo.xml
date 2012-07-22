@@ -24,15 +24,15 @@
     
  <GridView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/image_grid_view"
-    android:layout_width="700dp"
-     android:layout_height="fill_parent"
-    android:columnWidth="150dp"
+    android:layout_width="660dp"
+    android:layout_height="fill_parent"
+    android:columnWidth="130dp"
     android:numColumns="auto_fit"
-    android:verticalSpacing="0dp"
+    android:verticalSpacing="30dp"
     android:horizontalSpacing="0dp"
     android:stretchMode="columnWidth"
     android:layout_gravity="center"
-    android:layout_toLeftOf="@+id/rightmost_part"
+    android:layout_toRightOf="@+id/bottom_part"
     android:layout_below="@+id/button_save"
 />
     
@@ -43,18 +43,19 @@
    android:layout_height="wrap_content"
    android:weightSum="1.0"
    android:layout_alignParentLeft="true"
+   android:padding="10dp"
    >
 <Button
     android:id="@+id/button_add_if_2ft"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_if_2ft"
     android:onClick="onClickAddImage"/>
 
 <Button
     android:id="@+id/button_add_if_8ft"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_if_8ft"
     android:onClick="onClickAddImage"/>
 
@@ -94,40 +95,40 @@
    >
     <Button
     android:id="@+id/button_add_then_cw"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_then_cw"
     android:layout_centerHorizontal="true"
     android:onClick="onClickAddImage"/>
     
     <Button
     android:id="@+id/button_add_then_ccw"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_then_ccw"
     android:layout_centerHorizontal="true"
     android:onClick="onClickAddImage"/>
     
     <Button
     android:id="@+id/button_add_then_forwards"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_then_forwards"
     android:layout_centerHorizontal="true"
     android:onClick="onClickAddImage"/>
     
     <Button
     android:id="@+id/button_add_then_backwards"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_then_backwards"
     android:layout_centerHorizontal="true"
     android:onClick="onClickAddImage"/>
     
     <Button
     android:id="@+id/button_add_then_cow"
-    android:layout_width="80dp"
-    android:layout_height="64dp"
+    android:layout_width="150dp"
+    android:layout_height="109dp"
     android:background="@drawable/puzzle_then_cow"
     android:layout_centerHorizontal="true"
     android:onClick="onClickAddImage"/>

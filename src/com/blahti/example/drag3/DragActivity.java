@@ -17,6 +17,8 @@ import android.widget.FrameLayout;
 import android.widget.GridView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+import java.util.ArrayList;
 /**
  * This activity presents a screen with a grid on which images can be added and moved around.
  * It also defines areas on the screen where the dragged views can be dropped. Feedback is
@@ -94,6 +96,8 @@ public void addNewImageToScreen (int resourceId)
        newView.setOnLongClickListener(this);
        newView.setOnTouchListener (this);
 
+       saveSend();
+
     }
 }
 
@@ -102,7 +106,21 @@ public void addNewImageToScreen (int resourceId)
  * See addImageToScreen.
  *
  */    
+public void saveSend()
+{
 
+//get array from DragController
+//process it into a message
+//publish to topic 
+//create publisher in onNodeCreate and destroy in onNodeDestroy
+
+  ArrayList<Integer> puzzleArrangement = mDragController.getImagePositions();
+  for (int i = 0; i < puzzleArrangement.size(); i++)
+  {
+    Log.i("DragActivity", "this place is: " + puzzleArrangement.get(i));
+  }
+
+}
 
 /**
  * Handle a click on a view.
@@ -124,27 +142,43 @@ public void onClick(View v)
 
 public void onClickAddImage (View v) 
 {
-    if (v.getId() == R.id.button_add_then_cw)
-	addNewImageToScreen (R.drawable.puzzle_then_cw);
-    	
+        if (v.getId() == R.id.button_add_then_cw)
+        {
+      	  addNewImageToScreen (R.drawable.puzzle_then_cw);
+          mDragController.setRecentButton(1);
+
+    	}
 	if (v.getId() == R.id.button_add_then_ccw)
+        {
 	addNewImageToScreen (R.drawable.puzzle_then_ccw);
-	
+        mDragController.setRecentButton(2);
+	}
+
 	if (v.getId() == R.id.button_add_then_forwards)
-	addNewImageToScreen (R.drawable.puzzle_then_forwards);
-	
+	{
+          addNewImageToScreen (R.drawable.puzzle_then_forwards);
+	          mDragController.setRecentButton(3);
+        }
 	if (v.getId() == R.id.button_add_then_backwards)
-	addNewImageToScreen (R.drawable.puzzle_then_backwards);
-	
+	{
+          addNewImageToScreen (R.drawable.puzzle_then_backwards);
+	          mDragController.setRecentButton(4);
+        }
 	if (v.getId() == R.id.button_add_then_cow)
-	addNewImageToScreen (R.drawable.puzzle_then_cow);
-	
+	{
+          addNewImageToScreen (R.drawable.puzzle_then_cow);
+	          mDragController.setRecentButton(5);
+        }
 	if (v.getId() == R.id.button_add_if_2ft)
-		addNewImageToScreen (R.drawable.puzzle_if_2ft);
-	
+	{
+          addNewImageToScreen (R.drawable.puzzle_if_2ft);
+	          mDragController.setRecentButton(6);
+        }
 	if (v.getId() == R.id.button_add_if_8ft)
-		addNewImageToScreen (R.drawable.puzzle_if_8ft);
-	
+	{
+        	addNewImageToScreen (R.drawable.puzzle_if_8ft);
+	          mDragController.setRecentButton(7);
+        }
 	
 }
 

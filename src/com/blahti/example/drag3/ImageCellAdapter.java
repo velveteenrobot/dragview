@@ -59,7 +59,7 @@ public long getItemId(int position) {
 /**
  * getView
  * Return a view object for the grid.
- * 
+  
  * @return ImageCell
  */
 public View getView (int position, View convertView, ViewGroup parent) 
@@ -71,9 +71,9 @@ public View getView (int position, View convertView, ViewGroup parent)
         // If it's not recycled, create a new ImageCell.
         v = new ImageCell (mContext);
         v.setAdjustViewBounds(true);
-        v.setLayoutParams(new GridView.LayoutParams(260, 290));
+        v.setLayoutParams(new GridView.LayoutParams(170,131));
         v.setScaleType(ImageView.ScaleType.FIT_START);
-        v.setPadding(8, 8, 8, 8);
+        v.setPadding(0, 0, 0, 0);
         v.setMaxWidth(25); //doesn't seem to do anything
 
     } else {

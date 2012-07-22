@@ -33,7 +33,7 @@ import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 
 import java.util.ArrayList;
-
+import java.util.Arrays;
 /**
  * This class handles all touch events associated with a user
  * dragging a view around inside a ViewGroup.
@@ -110,6 +110,27 @@ public class DragController {
     private DropTarget mLastDropTarget;
 
     private InputMethodManager mInputMethodManager;
+
+    private int recentButton = -1;
+
+    private ArrayList<Integer> imagePositions = new ArrayList<Integer>(Arrays.asList(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1));
+
+    private int draggingFrom = -1;
+
+    private int draggedTo = -1;
+
+    public ArrayList<Integer> getImagePositions()
+    {
+      return imagePositions;
+    }
+
+    public void setRecentButton(int i)
+    {
+      recentButton = i;
+      return;
+    }
+
+
 
     /**
      * Interface to receive notifications when a drag starts or stops
@@ -232,6 +253,24 @@ public class DragController {
         DragView dragView = mDragView = new DragView(mContext, b, registrationX, registrationY,
                 textureLeft, textureTop, textureWidth, textureHeight);
         dragView.show(mWindowToken, (int)mMotionDownX, (int)mMotionDownY);
+
+        Log.i("DragController", "recentButton is: " + recentButton);
+
+        if (recentButton < 0)
+        {
+          int[] coordinates = mCoordinatesTemp;
+          int x = (int) mMotionDownX;
+          int y = (int) mMotionDownY;
+
+          draggingFrom = whichDropTarget(x, y, coordinates);
+        }
+        else
+        {
+          draggingFrom = -1;
+        }
+        Log.i("DragController", "dragging from: " + draggingFrom);
+
+
     }
 
     /**
@@ -456,9 +495,41 @@ public class DragController {
                 dropTarget.onDrop(mDragSource, coordinates[0], coordinates[1],
                         (int) mTouchOffsetX, (int) mTouchOffsetY, mDragView, mDragInfo);
                 mDragSource.onDropCompleted((View) dropTarget, true);
+
+                Log.i("DragController", "I get called this many times.");
+                Log.i("DragController", "draggedTo: " + draggedTo);
+
+                if (draggingFrom >= 0)
+                {
+                  int puzzle = imagePositions.get(draggingFrom);
+                  Log.i("DragController", "puzzle is: " + puzzle);
+                  imagePositions.set(draggingFrom, -1);
+                  imagePositions.set(draggedTo, puzzle);
+                  draggingFrom = -1;
+                }
+                else
+                {
+                  imagePositions.set(draggedTo, recentButton);
+                  recentButton = -1;
+                }
+
                 return true;
             } else {
                 mDragSource.onDropCompleted((View) dropTarget, false);
+                Log.i("DragController", "And I get called this many times.");
+                if (draggingFrom >= 0)
+                {
+                  int puzzle = imagePositions.get(draggingFrom);
+                  imagePositions.set(draggingFrom, -1);
+                  imagePositions.set(draggedTo, puzzle);
+                  draggingFrom = -1;
+                }
+                else
+                {
+                  imagePositions.set(draggedTo, recentButton);
+                  recentButton = -1;
+                }
+                
                 return true;
             }
         }
@@ -479,11 +550,38 @@ public class DragController {
                 dropCoordinates[0] = x - dropCoordinates[0];
                 dropCoordinates[1] = y - dropCoordinates[1];
                 Log.i("dragcontroller", "i =" + String.valueOf(i));
+                draggedTo = i;
+
                 return target;
             }
         }
         return null;
     }
+
+
+    private int whichDropTarget(int x, int y, int[] dropCoordinates)
+    {
+        final Rect r = mRectTemp;
+
+        final ArrayList<DropTarget> dropTargets = mDropTargets;
+        final int count = dropTargets.size();
+        Log.i("DropController", "number of which drop targets: " + count);
+        for (int i=count-1; i>=0; i--) {
+            final DropTarget target = dropTargets.get(i);
+            target.getHitRect(r);
+            target.getLocationOnScreen(dropCoordinates);
+            r.offset(dropCoordinates[0] - target.getLeft(), dropCoordinates[1] - target.getTop());
+            if (r.contains(x, y)) {
+                dropCoordinates[0] = x - dropCoordinates[0];
+                dropCoordinates[1] = y - dropCoordinates[1];
+                Log.i("DragController", "i is: " + i);
+                return i;
+            }
+        }
+        return -1;
+    }
+
+
 
     /**
      * Get the screen size so we can clamp events to the screen size so even if
