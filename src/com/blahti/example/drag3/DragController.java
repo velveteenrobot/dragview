@@ -114,7 +114,7 @@ public class DragController {
 
     private int recentButton = -1;
 
-    private ArrayList<Integer> imagePositions = new ArrayList<Integer>(Arrays.asList(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1));
+    private ArrayList<Integer> imagePositions = new ArrayList<Integer>(Arrays.asList(-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1));
 
     private int draggingFrom = -1;
 
